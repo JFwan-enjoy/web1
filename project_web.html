@@ -4,45 +4,72 @@
     <meta charset="utf-8">
     <title>프로젝트 과제</title>
     <link rel="stylesheet" href="project.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
   </head>
+  <script>
+  var Body = {
+    setColor: function (color) {
+      $('body').css('color', color);
+    },
+    setBackgroundColor: function(color) {
+      //document.querySelector('body').style.backgroundColor = color;
+      $('body').css('backgroundColor', color);
+    }
+  }
+  function nightDayHandler(self) {
+  	var target = document.querySelector('body');
+  	if(self.value === 'night') {
+  		Body.setBackgroundColor('Black');
+  		Body.setColor('#FFFFF0');
+  		self.value = 'day';
+  		Link.setColor('powderblue');
+  	} else {
+  		Body.setBackgroundColor('#FFFFF0');
+  		Body.setColor('black');
+  		self.value = 'night';
+  		Link.setColor('blue');
+  	}
+  }
+  </script>
   <body id="target">
     <h1><a href="/index.html">This is Project</a></h1>
     <h3><span class="bold">Web</span>사이트 구축하기</h3>
     <p>프로젝트야<p>
-    <input type="button" value="다크모드" onclick="
+    <!-- <input type="button" value="다크모드" onclick="
       document.querySelector('#target').style.backgroundColor = 'black';
       document.querySelector('#target').style.color = 'white';
     ">
     <input type="button" value="화이트모드" onclick="
       document.querySelector('#target').style.backgroundColor = '#FFFFF0';
       document.querySelector('#target').style.color = 'black';
-    ">
-    <input id="dark_bright" type="button" value="dark" onclick="
-  var target = document.querySelector('body');
-  if(this.value === 'dark'){
-    target.style.backgroundColor = 'black';
-    target.style.color = 'white';
-    this.value = 'bright';
+    "> -->
+    <!-- <input id="dark_bright" type="button" value="dark" onclick="
+    var target = document.querySelector('body');
+    if(this.value === 'dark'){
+      target.style.backgroundColor = 'black';
+      target.style.color = 'white';
+      this.value = 'bright';
 
-    var alist = document.querySelectorAll('a');
-    var i = 0;
-    while(i < alist.length){
-      alist[i].style.color = 'powderblue';
-      i = i + 1;
-    }
-  } else {
-    target.style.backgroundColor = 'white';
-    target.style.color = 'black';
-    this.value = 'dark';
+      var alist = document.querySelectorAll('a');
+      var i = 0;
+      while(i < alist.length){
+        alist[i].style.color = 'powderblue';
+        i = i + 1;
+      }
+    } else {
+      target.style.backgroundColor = 'white';
+      target.style.color = 'black';
+      this.value = 'dark';
 
-    var alist = document.querySelectorAll('a');
-    var i = 0;
-    while(i < alist.length){
-      alist[i].style.color = 'blue';
-      i = i + 1;
+      var alist = document.querySelectorAll('a');
+      var i = 0;
+      while(i < alist.length){
+        alist[i].style.color = 'blue';
+        i = i + 1;
+      }
     }
-  }
-">
+    "> -->
+  <input id="dark_bright" type="button" value="night" onclick="nightDayHandler(this);">
 <ol>
   <li><a href="1.html">HTML</a></li>
   <li><a href="2.html">CSS</a></li>
