@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>계산기</title>
+    <style>
+      .buttons {
+        color: blue;
+        padding-left: 100px;
+      }
+    </style>
+
+  </head>
+
+  <script>
+    function calculation() {
+      var result_calc;
+      var calc = document.getElementsByName('calculator');
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+      for (var i = 0, length = calc.length; i < length; i++) {
+        if(calc[i].checked) {
+          if(calc[i].value == "plus") {
+            result_calc = num1 + num2;
+          } else if(calc[i].value == "minus") {
+            result_calc = num1 - num2;
+          } else if(calc[i].value == "times") {
+            result_calc = num1 * num2;
+          } else if(calc[i].value == "dividing") {
+            result_calc = num1 / num2;
+          }
+        }
+      }
+      document.getElementById('result').value = result_calc;
+    }
+
+    function reset() {
+      document.getElementById('result').value = '';
+      var numbers = document.getElementsByClassName('nums');
+      for (var i = 0, length = numbers.length; i < length; i++) {
+        numbers[i].value = ''
+      }
+    }
+  </script>
+
+  <body>
+    숫자1 : <input type="text" id="num1" class="nums" placeholder="숫자1"> <br>
+    숫자2 : <input type="text" id="num2" class="nums" placeholder="숫자2"> <br>
+    연산 <span>&nbsp;</span> :
+    <label for="plus">+</label>
+    <input type="radio" name="calculator" id="plus" value="plus">
+    <label for="minus">-</label>
+    <input type="radio" name="calculator" id="minus" value="minus">
+    <label for="times">*</label>
+    <input type="radio" name="calculator" id="times" value="times">
+    <label for="dividing">/</label>
+    <input type="radio" name="calculator" id="dividing" value="dividing"><br>
+
+    결과 <span>&nbsp;</span> : <input readonly type="text" id="result" placeholder="결과값"><br>
+    <div class="buttons">
+      <input type="button" value="계산" onclick="calculation();">
+      <input type="button" value="지우개" onclick="reset();">
+    </div>
+  </body>
+</html>
